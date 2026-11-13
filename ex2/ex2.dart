@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 enum ButtonType {
   primary(Colors.blue),
   secondary(Colors.green),
@@ -8,27 +9,19 @@ enum ButtonType {
   const ButtonType(this.color);
 }
 
-enum IconPosition {
-  left,
-  right,
-}
+enum IconPosition { left, right }
 
 void main() {
   runApp(
     MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Custom buttons"),
-        ),
+        appBar: AppBar(title: const Text("Custom buttons")),
         body: const Padding(
           padding: EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              CustomButton(
-                label: "Submit",
-                icon: Icons.check,
-              ),
+              CustomButton(label: "Submit", icon: Icons.check),
 
               CustomButton(
                 label: "Time",
@@ -59,32 +52,47 @@ class CustomButton extends StatelessWidget {
 
   const CustomButton({
     super.key,
-    required this.label,                           
-    required this.icon,                            
-    this.iconPosition = IconPosition.left,         
-    this.buttonType = ButtonType.primary,         
+    required this.label,
+    required this.icon,
+    this.iconPosition = IconPosition.left,
+    this.buttonType = ButtonType.primary,
   });
+
+  Widget buildButtonContent() {
+    if (iconPosition == IconPosition.left) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+
+        children: [
+          Icon(icon,color: Colors.white),
+          const SizedBox(width: 10),
+          Text(label),
+        ],
+      );
+    }else{
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(label),
+          const SizedBox(width: 10),
+          Icon(icon, color: Colors.white),
+        ],
+      );
+    
+      
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 15),  
+      margin: const EdgeInsets.only(bottom: 15),
       padding: const EdgeInsets.symmetric(vertical: 12),
       decoration: BoxDecoration(
-        color: buttonType.color,                   
-        borderRadius: BorderRadius.circular(30),   
+        color: buttonType.color,
+        borderRadius: BorderRadius.circular(30),
       ),
-     child: Row(
-  mainAxisAlignment: MainAxisAlignment.center,
-  children: [
-    Icon(icon, color: Colors.white, size: 20),
-    const SizedBox(width: 10),
-    Text(
-      label,
-      style: const TextStyle(color: Colors.white, fontSize: 16),
-    ),
-  ],
-),
+      child: buildButtonContent(),
     );
   }
 }

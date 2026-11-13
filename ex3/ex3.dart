@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-
-// PART 2 — enum with attributes (fixed products, they never change)
 enum Product {
   dart(
-    title: 'Dart',
+    title: 'dart',
     description: 'the best object language',
     image: 'dart.png',
   ),
   flutter(
-    title: 'Flutter',
+    title: 'flutter',
     description: 'the best mobile widget library',
     image: 'flutter.png',
   ),
   firebase(
-    title: 'Firebase',
+    title: 'firebase',
     description: 'the best cloud database',
     image: 'firebase.png',
   );
@@ -39,7 +37,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Products'),
@@ -60,7 +57,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// PART 3 — reusable card. Only one named required parameter: product
 class ProductCard extends StatelessWidget {
   final Product product;
 
@@ -77,7 +73,6 @@ class ProductCard extends StatelessWidget {
   
       child: Padding(
         padding: const EdgeInsets.all(16),
-        // Image on top, then title, then description (left aligned, like the mockup)
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
