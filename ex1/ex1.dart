@@ -4,62 +4,41 @@ void main(){
   runApp(
     MaterialApp(
       home:Scaffold(
+          backgroundColor: Colors.grey,
+
         appBar: AppBar(
           title: Text("My Hobbies"),
-        
+
         ),
-        
-        body:Container(
-          decoration: BoxDecoration(
-          color: Colors.grey,),
-          child: Padding(padding:EdgeInsets.all(40),
-          
+        body: Padding(
+          padding: EdgeInsetsGeometry.all(40),
           child: Column(
-            spacing: 10,
+            crossAxisAlignment:CrossAxisAlignment.stretch,
             children: [
-              
-              card(text: "Travelling", color: Colors.green, icon: Icons.search),
-              card(text: "Skating", color: const Color.fromARGB(255, 18, 57, 90), icon: Icons.skateboarding),
-            
-            ]
-              
-          ),
-                ),
-        ),
-          
-        )
-        ),
-    
-  );
-}
-Widget card({
-  required String text,
-  required Color color,
-  required IconData icon,
-}){
-  return Container(
-              
-              padding: EdgeInsets.all(20),
-              
-              decoration: BoxDecoration(
-                color: color ,
-                borderRadius: BorderRadius.circular(20),
+              Container(
+            padding:  EdgeInsets.all(25), // vertical thickness of the card
+                
+                decoration: BoxDecoration(color: Colors.green,borderRadius: BorderRadius.circular(20)),
+                  child: Row(
+                    children: [
+                      Padding(padding: EdgeInsets.only(right: 20),
+                      child: Icon(Icons.travel_explore,color: Colors.white,size: 30,),
+                      ),
+                      Text("Travelling",style: TextStyle(color: Colors.white,fontSize: 20),),
+                    ],
+                  )
+                
               ),
-            child: Row(
-              children: [
-                
-                // SizedBox(width: 20),
-                Icon(icon, color: Colors.white, size: 16),
-                SizedBox(width: 20),
-                Text(text, style: TextStyle(color: Colors.white)),
-                
               
-
               
-              ],
+            ],
 
-            ),
-
+          ),
+        ),
+        
+        
+      ),
+    ),
+  );
           
-            );
 }
