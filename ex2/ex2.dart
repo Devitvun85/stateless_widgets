@@ -8,7 +8,6 @@ enum ButtonType {
   const ButtonType(this.color);
 }
 
-// 2. Enum for Icon Position
 enum IconPosition {
   left,
   right,
@@ -17,7 +16,6 @@ enum IconPosition {
 void main() {
   runApp(
     MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: const Text("Custom buttons"),
